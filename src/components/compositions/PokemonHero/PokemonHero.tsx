@@ -5,6 +5,7 @@ import { usePokemonGenerations, usePokemonSpecies } from '~/api/pokemon/hooks';
 import Badge from '~/components/components/Badge/Badge';
 import Container from '~/components/components/Container/Container';
 import Image from '~/components/components/Image/Image';
+import Skeleton from '~/components/components/Skeleton/Skeleton';
 import Typography from '~/components/components/Typography/Typography';
 import { BadgeSizes } from '~/constants/badge';
 import {
@@ -40,6 +41,13 @@ const PokemonHero = (props: PokemonHeroProps) => {
     generationsQuery.data?.find(
       (item) => item.name === speciesQuery.data?.generation?.name,
     );
+
+  // Without this, the caption below just silently renders nothing while
+  // speciesQuery/generationsQuery are loading (their data is undefined, so
+  // the `Show` guarding it sees a falsy condition) and pops in once they
+  // resolve, instead of showing a placeholder.
+  const isLoadingGeneration = () =>
+    speciesQuery.isLoading || generationsQuery.isLoading;
 
   const image = () =>
     props.pokemon.sprites?.other?.['official-artwork']?.front_default ??
@@ -89,21 +97,26 @@ const PokemonHero = (props: PokemonHeroProps) => {
               }}
             </For>
           </div>
-          <Show when={speciesQuery.data && generation()}>
-            <Typography
-              type={TypographyTypes.CAPTION}
-              color="muted-foreground"
-              class={classes.generation}
-            >
-              {t('pokemonDetails.generation', {
-                generation: t(
-                  `pokemonGenerations.${speciesQuery.data?.generation.name as PokemonGeneration}`,
-                ),
-                region: t(
-                  `pokemonRegions.${generation()?.main_region.name as PokemonRegion}`,
-                ),
-              })}
-            </Typography>
+          <Show
+            when={!isLoadingGeneration()}
+            fallback={<Skeleton class={classes.generationSkeleton} />}
+          >
+            <Show when={speciesQuery.data && generation()}>
+              <Typography
+                type={TypographyTypes.CAPTION}
+                color="muted-foreground"
+                class={classes.generation}
+              >
+                {t('pokemonDetails.generation', {
+                  generation: t(
+                    `pokemonGenerations.${speciesQuery.data?.generation.name as PokemonGeneration}`,
+                  ),
+                  region: t(
+                    `pokemonRegions.${generation()?.main_region.name as PokemonRegion}`,
+                  ),
+                })}
+              </Typography>
+            </Show>
           </Show>
         </div>
       </div>

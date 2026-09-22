@@ -1,25 +1,13 @@
-@use 'src/styles/mixins' as *;
-
 .layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto 1fr;
   height: 100dvh;
   overflow-y: auto;
   overflow-x: hidden;
+  // The virtualized pokemon list manages scroll position itself; native
+  // scroll anchoring fights it, snapping scrollTop down by a row height
+  // whenever virtual rows are inserted/resized above the fold.
+  overflow-anchor: none;
   background: var(--background);
-
-  &.noFilters {
-    grid-template-rows: auto 1fr;
-  }
-}
-
-.filters {
-  padding: var(--space-3) var(--space-7);
-  background: var(--muted);
-  border-bottom: 3px solid var(--border);
-
-  @include mq(sm) {
-    padding: var(--space-3) var(--space-4);
-  }
 }

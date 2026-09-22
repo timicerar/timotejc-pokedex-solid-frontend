@@ -1,11 +1,10 @@
-import { type ParentComponent, Suspense } from 'solid-js';
-import SplashScreen from '~/components/components/SplashScreen/SplashScreen';
+import type { ParentComponent } from 'solid-js';
 import ModalProvider from '~/components/providers/ModalProvider/ModalProvider';
 
 const App: ParentComponent = (props) => {
   return (
     <>
-      <Suspense fallback={<SplashScreen />}>{props.children}</Suspense>
+      {props.children}
       <ModalProvider />
     </>
   );

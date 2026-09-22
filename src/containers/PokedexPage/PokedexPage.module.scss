@@ -1,0 +1,11 @@
+@use 'src/styles/mixins' as *;
+
+.filters {
+  padding: var(--space-3) var(--space-7);
+  background: var(--muted);
+  border-bottom: 3px solid var(--border);
+
+  @include mq(sm) {
+    padding: var(--space-3) var(--space-4);
+  }
+}

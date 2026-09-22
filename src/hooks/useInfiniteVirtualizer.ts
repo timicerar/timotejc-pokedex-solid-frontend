@@ -27,27 +27,20 @@ export const useInfiniteVirtualizer = ({
   const rowCount = () =>
     Math.ceil((itemCount() + (hasNextPage?.() ? 1 : 0)) / columnCount());
 
-  // @tanstack/solid-virtual only re-resolves `getScrollElement()` when its
-  // reactive `count` getter is read again. If the query data resolves
-  // before this component mounts, `count` reaches its real value while
-  // `getScrollElement()` still returns undefined (the ref isn't attached
-  // yet) — the virtualizer caches that `null` scroll element permanently
-  // and `getVirtualItems()` silently stays empty forever, since nothing
-  // else ever forces it to re-check. Gating `count` behind `isMounted`
-  // guarantees the virtualizer's first real computation happens only once
-  // the scroll ref is definitely attached.
   const [isMounted, setIsMounted] = createSignal(false);
   onMount(() => setIsMounted(true));
 
   const rowVirtualizer = createVirtualizer({
     get count() {
-      return isMounted() ? rowCount() : 0;
+      return rowCount();
     },
-    getScrollElement,
+    getScrollElement: () => (isMounted() ? getScrollElement() : null),
     estimateSize: () => estimateRowSize,
     overscan,
     gap,
   });
+
+  rowVirtualizer.shouldAdjustScrollPositionOnItemSizeChange = () => false;
 
   createEffect(() => {
     const virtualRows = rowVirtualizer.getVirtualItems();
