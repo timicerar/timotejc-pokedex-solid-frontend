@@ -5,7 +5,9 @@ import '~/styles/global.scss';
 
 import { MetaProvider } from '@solidjs/meta';
 import { Router } from '@solidjs/router';
+import { QueryClientProvider } from '@tanstack/solid-query';
 import { render } from 'solid-js/web';
+import { queryClient } from '~/lib/queryClient';
 import ThemeProvider from '~/theme/ThemeProvider';
 import App from './app';
 import { routes } from './routes';
@@ -21,15 +23,17 @@ if (!(root instanceof HTMLElement)) {
 render(
   () => (
     <ThemeProvider>
-      <Router
-        root={(props) => (
-          <MetaProvider>
-            <App>{props.children}</App>
-          </MetaProvider>
-        )}
-      >
-        {routes}
-      </Router>
+      <QueryClientProvider client={queryClient}>
+        <Router
+          root={(props) => (
+            <MetaProvider>
+              <App>{props.children}</App>
+            </MetaProvider>
+          )}
+        >
+          {routes}
+        </Router>
+      </QueryClientProvider>
     </ThemeProvider>
   ),
   root,

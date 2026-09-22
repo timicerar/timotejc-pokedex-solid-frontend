@@ -10,7 +10,6 @@ const NotFoundRoute = () => {
         title={t('meta.notFound.title')}
         description={t('meta.notFound.description')}
       />
-
       <NotFound type={NotFoundTypes.GENERIC} />
     </>
   );
