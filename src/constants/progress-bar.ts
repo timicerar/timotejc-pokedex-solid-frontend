@@ -1,0 +1,1 @@
+export const DEFAULT_PROGRESS_MAX_VALUE = 100;

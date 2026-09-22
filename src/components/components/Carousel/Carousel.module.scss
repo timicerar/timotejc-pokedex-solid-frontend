@@ -1,0 +1,13 @@
+.container {
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+}
+
+.slide {
+  box-sizing: border-box;
+  flex: 0 0 100%;
+  min-width: 0;
+}

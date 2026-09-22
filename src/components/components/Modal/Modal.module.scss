@@ -1,0 +1,89 @@
+@use 'src/styles/mixins' as *;
+
+.dialog {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 440px;
+  padding: 0;
+  margin: auto;
+  background: none;
+  border: none;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  color: inherit;
+  opacity: 0;
+  transition:
+    opacity var(--modal-transition-duration) ease,
+    overlay var(--modal-transition-duration) allow-discrete,
+    display var(--modal-transition-duration) allow-discrete;
+
+  &::backdrop {
+    background: rgb(8 10 16 / 0%);
+    transition:
+      background-color var(--modal-transition-duration) ease,
+      overlay var(--modal-transition-duration) allow-discrete,
+      display var(--modal-transition-duration) allow-discrete;
+  }
+
+  &[open] {
+    opacity: 1;
+  }
+
+  &[open]::backdrop {
+    background: rgb(8 10 16 / 62%);
+  }
+
+  @starting-style {
+    &[open] {
+      opacity: 0;
+    }
+
+    &[open]::backdrop {
+      background: rgb(8 10 16 / 0%);
+    }
+  }
+
+  @include mq('sm') {
+    max-width: 100%;
+    max-height: 88vh;
+    margin: auto auto 0;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    box-shadow: 0 -6px 0 var(--primary);
+  }
+}
+
+.frame {
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+
+  @include mq('sm') {
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  }
+}
+
+.content {
+  position: relative;
+  box-sizing: border-box;
+  max-height: 86vh;
+  overflow-y: auto;
+  padding: var(--space-6);
+  background: var(--card);
+  color: var(--card-foreground);
+  border: 3px solid var(--border);
+  border-radius: var(--radius-xl);
+
+  @include mq('sm') {
+    max-height: 88vh;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog {
+    transition: none;
+
+    &::backdrop {
+      transition: none;
+    }
+  }
+}

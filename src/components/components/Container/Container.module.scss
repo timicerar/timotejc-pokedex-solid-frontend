@@ -1,0 +1,22 @@
+@use 'src/styles/mixins' as *;
+
+.container {
+  height: 100%;
+  width: 100%;
+  padding: var(--space-6) var(--space-7);
+
+  @include mq(sm) {
+    padding: var(--space-6) var(--space-4);
+  }
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hasMaxWidth {
+  margin: 0 auto;
+}

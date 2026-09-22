@@ -1,7 +1,9 @@
 import HelmetMetadata from '~/components/components/HelmetMetadata/HelmetMetadata';
+import NotFound from '~/components/compositions/NotFound/NotFound';
+import { NotFoundTypes } from '~/constants/not-found';
 import { t } from '~/lib/i18n';
 
-const NotFound = () => {
+const NotFoundRoute = () => {
   return (
     <>
       <HelmetMetadata
@@ -9,12 +11,9 @@ const NotFound = () => {
         description={t('meta.notFound.description')}
       />
 
-      <section>
-        <h1>404: Not Found</h1>
-        <p>It's gone 😞</p>
-      </section>
+      <NotFound type={NotFoundTypes.GENERIC} />
     </>
   );
 };
 
-export default NotFound;
+export default NotFoundRoute;

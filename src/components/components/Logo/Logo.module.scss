@@ -1,0 +1,17 @@
+.logo {
+  display: inline-flex;
+}
+
+.image {
+  display: none;
+  width: 100%;
+  height: auto;
+}
+
+:global(html[data-theme='light']) .image--light {
+  display: block;
+}
+
+:global(html[data-theme='dark']) .image--dark {
+  display: block;
+}

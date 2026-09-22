@@ -1,0 +1,37 @@
+@use 'src/styles/mixins' as *;
+
+.button {
+  @include button-base;
+}
+
+.sm {
+  @include button-sm;
+}
+
+.fullWidth {
+  @include button-full-width;
+}
+
+.primary {
+  @include button-primary;
+}
+
+.secondary {
+  @include button-secondary-surface;
+}
+
+.ghost {
+  @include button-ghost;
+}
+
+.destructive {
+  @include button-destructive;
+}
+
+.rounded {
+  @include button-rounded;
+
+  &.sm {
+    @include button-rounded('sm');
+  }
+}

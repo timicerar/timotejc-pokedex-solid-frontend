@@ -1,0 +1,82 @@
+@use 'src/styles/mixins' as *;
+
+.container {
+  margin: 0;
+  color: inherit;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.display-xs {
+  @include typography('display-xs', 'display');
+}
+
+.display-sm {
+  @include typography('display-sm', 'display');
+}
+
+.display-base {
+  @include typography('display-base', 'display');
+}
+
+.display-lg {
+  @include typography('display-lg', 'display');
+}
+
+.display-2xl {
+  @include typography('display-2xl', 'display');
+}
+
+.display-4xl {
+  @include typography('display-4xl', 'display');
+}
+
+.label {
+  @include typography('label', 'body');
+}
+
+.caption {
+  @include typography('caption', 'body');
+}
+
+.body-sm {
+  @include typography('body-sm', 'body');
+}
+
+.body {
+  @include typography('body', 'body');
+}
+
+.body-semibold {
+  @include typography('body-semibold', 'body');
+}
+
+.button {
+  @include typography('button', 'body');
+}
+
+.card-title {
+  @include typography('card-title', 'body');
+}
+
+.heading-lg {
+  @include typography('heading-lg', 'body');
+}
+
+.heading-xl {
+  @include typography('heading-xl', 'body');
+}
+
+.id-label {
+  @include typography('id-label', 'mono');
+}
+
+.id-label-lg {
+  @include typography('id-label-lg', 'mono');
+}
+
+.stat-value {
+  @include typography('stat-value', 'mono');
+}

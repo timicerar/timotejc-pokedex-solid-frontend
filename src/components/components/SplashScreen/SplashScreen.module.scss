@@ -1,0 +1,14 @@
+.splash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100dvh;
+  background: var(--background);
+  padding: var(--space-4);
+}
+
+.logo {
+  width: 100%;
+  max-width: 220px;
+}

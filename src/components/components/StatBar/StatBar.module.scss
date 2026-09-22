@@ -1,0 +1,30 @@
+@use 'src/styles/mixins' as *;
+
+.stat {
+  display: grid;
+  grid-template-columns: 64px 1fr 34px;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+
+  @include mq('sm') {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    row-gap: 4px;
+
+    .label {
+      order: 1;
+    }
+
+    .value {
+      order: 2;
+    }
+
+    .progress {
+      order: 3;
+      flex-basis: 100%;
+    }
+  }
+}

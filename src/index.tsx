@@ -1,10 +1,12 @@
 /* @refresh reload */
 import 'solid-devtools';
-import './index.css';
+import '~/styles/tokens.css';
+import '~/styles/global.scss';
 
 import { MetaProvider } from '@solidjs/meta';
 import { Router } from '@solidjs/router';
 import { render } from 'solid-js/web';
+import ThemeProvider from '~/theme/ThemeProvider';
 import App from './app';
 import { routes } from './routes';
 
@@ -18,15 +20,17 @@ if (!(root instanceof HTMLElement)) {
 
 render(
   () => (
-    <Router
-      root={(props) => (
-        <MetaProvider>
-          <App>{props.children}</App>
-        </MetaProvider>
-      )}
-    >
-      {routes}
-    </Router>
+    <ThemeProvider>
+      <Router
+        root={(props) => (
+          <MetaProvider>
+            <App>{props.children}</App>
+          </MetaProvider>
+        )}
+      >
+        {routes}
+      </Router>
+    </ThemeProvider>
   ),
   root,
 );

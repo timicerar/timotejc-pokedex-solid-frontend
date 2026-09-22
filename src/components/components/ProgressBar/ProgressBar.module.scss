@@ -1,0 +1,50 @@
+.track {
+  width: 100%;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.fill {
+  position: relative;
+  height: 100%;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  transition: width 500ms ease-out;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 35%),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer-sweep 1.4s ease infinite;
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fill {
+    transition: none;
+  }
+
+  .shimmer::after {
+    animation: none;
+  }
+}

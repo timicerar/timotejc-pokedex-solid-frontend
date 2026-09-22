@@ -1,0 +1,33 @@
+@use 'src/styles/mixins' as *;
+
+.tab {
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-bottom: 4px solid transparent;
+  box-sizing: border-box;
+  padding: var(--space-3) var(--space-4);
+  color: var(--muted-foreground);
+  cursor: pointer;
+  white-space: nowrap;
+  @include typography('label', 'body');
+
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: -2px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}

@@ -1,0 +1,41 @@
+@use 'src/styles/mixins' as *;
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-5);
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 420px;
+    gap: var(--space-3);
+  }
+
+  @include mq(sm) {
+    gap: var(--space-4);
+  }
+}
+
+.pokemon-list {
+  padding: var(--space-10) 0;
+}
+
+.logo {
+  width: 100%;
+  max-width: 320px;
+}
+
+.code {
+  color: var(--primary);
+}
+
+.button {
+  @include mq(sm) {
+    width: 100%;
+  }
+}

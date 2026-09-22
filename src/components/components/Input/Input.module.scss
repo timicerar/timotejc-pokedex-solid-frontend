@@ -1,0 +1,66 @@
+@use 'src/styles/mixins' as *;
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+
+  &.disabled {
+    opacity: 0.5;
+  }
+}
+
+.input {
+  width: 100%;
+  background: var(--card);
+  color: var(--foreground);
+  border: 2px solid var(--input);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) 14px;
+  @include typography('body-sm');
+  outline: none;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+
+  &::placeholder {
+    color: var(--muted-foreground);
+  }
+
+  &:focus-visible {
+    border-color: var(--ring);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 18%, transparent);
+  }
+
+  &:disabled {
+    background: var(--muted);
+    cursor: not-allowed;
+  }
+
+  &.withLeadingIcon {
+    padding-left: 36px;
+  }
+
+  &.withTrailingIcon {
+    padding-right: 36px;
+  }
+}
+
+.leadingIcon,
+.trailingIcon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  color: var(--muted-foreground);
+  pointer-events: none;
+}
+
+.leadingIcon {
+  left: 12px;
+}
+
+.trailingIcon {
+  right: 12px;
+}

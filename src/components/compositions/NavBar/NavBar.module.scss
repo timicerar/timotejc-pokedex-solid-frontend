@@ -1,0 +1,61 @@
+@use 'src/styles/mixins' as *;
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-7);
+  background: var(--card);
+  border-bottom: 3px solid var(--border);
+  min-height: 72px;
+
+  @include mq(sm) {
+    padding: var(--space-3) var(--space-4);
+    column-gap: var(--space-3);
+    min-height: 60px;
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .logo {
+    width: 100%;
+    max-width: 140px;
+
+    @include mq(sm) {
+      max-width: 110px;
+    }
+  }
+}
+
+.backLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  white-space: nowrap;
+  color: var(--foreground);
+  text-decoration: none;
+  @include typography('label', 'body', true);
+
+  @include hover {
+    color: var(--primary);
+  }
+
+  @include mq(xs) {
+    display: none;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  gap: var(--space-2);
+}

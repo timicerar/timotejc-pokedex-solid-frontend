@@ -1,0 +1,49 @@
+@use 'src/styles/mixins' as *;
+
+.tabsList {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  gap: var(--space-1);
+}
+
+.equalWidth {
+  > * {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  @include mq(lsm) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+
+    > *:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @include mq(xs) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.scrollable {
+  overflow-x: auto;
+  cursor: grab;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > * {
+    flex: none;
+  }
+
+  &:active {
+    cursor: grabbing;
+    user-select: none;
+  }
+}

@@ -1,0 +1,150 @@
+@use 'sass:map';
+
+$breakpoints: (
+  xs: 375,
+  sm: 600,
+  lsm: 800,
+  md: 960,
+  lmd: 1024,
+  lg: 1280,
+  llg: 1600,
+  xl: 1920,
+);
+
+@mixin mq($width, $type: max) {
+  @if map.has-key($breakpoints, $width) {
+    $width: map.get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 0.5;
+    }
+    @media only screen and (#{$type}-width: #{$width}px) {
+      @content;
+    }
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin lineClamp($numOfLines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $numOfLines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin typography($variant, $family: 'body', $uppercase: false) {
+  font-family: var(--font-#{$family});
+  font-size: var(--text-#{$variant}-size);
+  line-height: var(--text-#{$variant}-line-height);
+  font-weight: var(--text-#{$variant}-weight);
+  letter-spacing: var(--text-#{$variant}-letter-spacing);
+
+  @if $uppercase {
+    text-transform: uppercase;
+  }
+}
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  box-sizing: border-box;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  padding: var(--space-2) var(--space-4);
+  @include typography('button', 'body', true);
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    border-color 150ms ease;
+
+  &:focus-visible {
+    outline: 2px solid var(--ring);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-sm {
+  padding: var(--space-1) var(--space-3);
+}
+
+@mixin button-full-width {
+  width: 100%;
+}
+
+@mixin button-primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: var(--shadow-sm);
+
+  &:not(:disabled) {
+    @include hover {
+      transform: translate(-1px, -1px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+}
+
+@mixin button-secondary-surface {
+  background: var(--muted);
+  color: var(--foreground);
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow-sm);
+
+  &:not(:disabled) {
+    @include hover {
+      transform: translate(-1px, -1px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+}
+
+@mixin button-ghost {
+  background: transparent;
+  color: var(--foreground);
+
+  &:not(:disabled) {
+    @include hover {
+      background: var(--muted);
+    }
+  }
+}
+
+@mixin button-destructive {
+  background: var(--destructive);
+  color: var(--destructive-foreground);
+  box-shadow: var(--shadow-sm);
+
+  &:not(:disabled) {
+    @include hover {
+      transform: translate(-1px, -1px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+}
+
+@mixin button-rounded($size: 'default') {
+  @include button-secondary-surface;
+  padding: 0;
+
+  @if $size == 'sm' {
+    width: 32px;
+    height: 32px;
+  } @else {
+    width: 36px;
+    height: 36px;
+  }
+}

@@ -1,0 +1,21 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+
+.skeleton {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.hidden {
+  visibility: hidden;
+}

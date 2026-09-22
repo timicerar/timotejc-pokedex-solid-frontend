@@ -1,0 +1,45 @@
+@use 'src/styles/mixins' as *;
+
+$pokemon-types:
+  normal, fire, water, electric, grass, ice, fighting, poison, ground, flying,
+  psychic, bug, rock, ghost, dragon, dark, steel, fairy, stellar, unknown;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  border-radius: var(--radius-full);
+  padding: 4px var(--space-2);
+  @include typography('caption', 'body', true);
+}
+
+.sm {
+  padding: 2px var(--space-1);
+  @include typography('label', 'body', true);
+}
+
+.default {
+  background: var(--muted);
+  color: var(--foreground);
+  border-color: var(--border);
+}
+
+.primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.outline {
+  background: transparent;
+  color: var(--foreground);
+  border-color: var(--border);
+}
+
+@each $type in $pokemon-types {
+  .#{$type} {
+    background: var(--type-#{$type});
+    color: var(--type-#{$type}-foreground);
+    border-color: rgba(0, 0, 0, 0.18);
+  }
+}
