@@ -1,3 +1,5 @@
+import { createEffect, createSignal, on } from 'solid-js';
+
 import type { Pokemon } from '~/api/models/Pokemon';
 import Container from '~/components/components/Container/Container';
 import Tab from '~/components/components/Tabs/Tab/Tab';
@@ -24,8 +26,25 @@ const PokemonTabs = (props: PokemonTabsProps) => {
   const isTouchDevice = useIsTouchDevice();
   const disableWrap = () => isTablet() && isTouchDevice();
 
+  const [activeTab, setActiveTab] = createSignal<string>(
+    PokemonDetailsTabs.ABOUT,
+  );
+
+  createEffect(
+    on(
+      () => props.pokemon.id,
+      () => setActiveTab(PokemonDetailsTabs.ABOUT),
+      { defer: true },
+    ),
+  );
+
   return (
-    <Tabs defaultValue={PokemonDetailsTabs.ABOUT} class={classes.tabs}>
+    <Tabs
+      value={activeTab()}
+      onValueChange={setActiveTab}
+      defaultValue={PokemonDetailsTabs.ABOUT}
+      class={classes.tabs}
+    >
       <div class={classes.tabsBar}>
         <TabsList wrap={!disableWrap()}>
           <Tab value={PokemonDetailsTabs.ABOUT} uppercase>
