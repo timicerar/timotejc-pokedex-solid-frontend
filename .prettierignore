@@ -1,0 +1,5 @@
+# Allow SCSS files
+!**/*.scss
+
+# Allow CSS files
+!**/*.css

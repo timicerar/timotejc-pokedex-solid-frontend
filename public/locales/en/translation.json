@@ -1,0 +1,168 @@
+{
+  "meta": {
+    "home": {
+      "title": "Pokédex",
+      "description": "Browse the full Pokédex and discover detailed stats, types, and abilities for every Pokémon."
+    },
+    "details": {
+      "title": "Pokémon Details - Pokédex",
+      "description": "View detailed stats, types, abilities, and more for this Pokémon."
+    },
+    "notFound": {
+      "title": "Page Not Found - Pokédex",
+      "description": "The page you're looking for doesn't exist or may have been moved."
+    }
+  },
+  "shared": {
+    "pokedex": "Pokédex",
+    "backToPokedex": "Back to Pokédex",
+    "goHome": "Go Home",
+    "scrollToTop": "Scroll to top",
+    "weakAgainst": "Weak against",
+    "baseStats": "Base stats",
+    "total": "Total"
+  },
+  "select": {
+    "placeholder": "Select an option",
+    "reset": "Clear"
+  },
+  "pokemonFilters": {
+    "searchPlaceholder": "Search Pokémon by name",
+    "clearFilters": "Clear filters"
+  },
+  "pokemonCard": {
+    "viewDetails": "View details for {{name}}"
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light Mode",
+    "dark": "Dark Mode"
+  },
+  "notFound": {
+    "404": "404",
+    "generic": {
+      "title": "This page wandered off the map",
+      "description": "The route you followed doesn't lead anywhere in the Pokédex. Let's get you back on the path."
+    },
+    "pokemonDetails": {
+      "title": "Pokémon not found",
+      "description": "We looked all through the tall grass, but there's no entry for that number in this Pokédex. Double-check it and try again."
+    },
+    "pokemonList": {
+      "title": "No Pokémon found",
+      "description": "Try a different search term, type or generation."
+    },
+    "pokemonMove": {
+      "title": "Pokemon Move was not found"
+    },
+    "pokemonEvolutionChain": {
+      "title": "Evolution chain not found",
+      "description": "We couldn't find any evolution data for this Pokémon."
+    }
+  },
+  "pokemonTypes": {
+    "normal": "Normal",
+    "fire": "Fire",
+    "water": "Water",
+    "electric": "Electric",
+    "grass": "Grass",
+    "ice": "Ice",
+    "fighting": "Fighting",
+    "poison": "Poison",
+    "ground": "Ground",
+    "flying": "Flying",
+    "psychic": "Psychic",
+    "bug": "Bug",
+    "rock": "Rock",
+    "ghost": "Ghost",
+    "dragon": "Dragon",
+    "dark": "Dark",
+    "steel": "Steel",
+    "fairy": "Fairy",
+    "stellar": "Stellar",
+    "unknown": "Unknown"
+  },
+  "selectPokemonType": {
+    "label": "Type",
+    "allTypes": "All Types"
+  },
+  "pokemonGenerations": {
+    "generation-i": "Generation I",
+    "generation-ii": "Generation II",
+    "generation-iii": "Generation III",
+    "generation-iv": "Generation IV",
+    "generation-v": "Generation V",
+    "generation-vi": "Generation VI",
+    "generation-vii": "Generation VII",
+    "generation-viii": "Generation VIII",
+    "generation-ix": "Generation IX"
+  },
+  "selectPokemonGeneration": {
+    "label": "Generation",
+    "allGenerations": "All Generations"
+  },
+  "modal": {
+    "close": "Close",
+    "confirmationModal": {
+      "title": "Are you sure?",
+      "description": "This action cannot be undone.",
+      "confirm": "Confirm",
+      "cancel": "Cancel"
+    },
+    "pokemonDetailsModal": {
+      "viewFullDetails": "View Full Details"
+    }
+  },
+  "pokemonStats": {
+    "hp": "HP",
+    "attack": "ATK",
+    "defense": "DEF",
+    "special-attack": "SP. ATK",
+    "special-defense": "SP. DEF",
+    "speed": "SPD"
+  },
+  "pokemonDetails": {
+    "height": "Height",
+    "weight": "Weight",
+    "abilities": "Abilities",
+    "pokedexEntry": "Pokédex Entry",
+    "movePower": "PWR {{power}}",
+    "generation": "{{generation}} — {{region}}",
+    "tabs": {
+      "about": "About",
+      "baseStats": "Base Stats",
+      "evolutionChain": "Evolution Chain",
+      "moves": "Moves",
+      "sprites": "Sprites"
+    }
+  },
+  "pokemonMoveCategories": {
+    "physical": "Physical",
+    "special": "Special",
+    "status": "Status"
+  },
+  "pokemonRegions": {
+    "kanto": "Kanto",
+    "johto": "Johto",
+    "hoenn": "Hoenn",
+    "sinnoh": "Sinnoh",
+    "unova": "Unova",
+    "kalos": "Kalos",
+    "alola": "Alola",
+    "galar": "Galar",
+    "paldea": "Paldea"
+  },
+  "pokemonSprites": {
+    "official-artwork-default": "Official Artwork",
+    "official-artwork-shiny": "Official Artwork (Shiny)",
+    "home-default": "Home",
+    "home-shiny": "Home (Shiny)",
+    "front-default": "Front",
+    "front-shiny": "Front (Shiny)",
+    "back-default": "Back",
+    "back-shiny": "Back (Shiny)",
+    "previous": "Previous sprite",
+    "next": "Next sprite",
+    "goToSlide": "Go to sprite {{index}}"
+  }
+}

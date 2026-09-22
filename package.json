@@ -1,0 +1,37 @@
+{
+  "name": "timotejc-pokedex-solid-frontend",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome lint",
+    "check": "biome check",
+    "check:prettier": "prettier --check \"**/*.{scss,css}\"",
+    "format": "biome format --write",
+    "format:prettier": "prettier --write \"**/*.{scss,css}\""
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@biomejs/biome": "~2.5.14",
+    "@types/node": "~22.20.3",
+    "@types/prettier": "~3.0.0",
+    "prettier": "~3.9.7",
+    "sass": "~1.104.1",
+    "solid-devtools": "^0.34.3",
+    "typescript": "~7.0.2",
+    "vite": "^7.1.4",
+    "vite-plugin-solid": "^2.11.8"
+  },
+  "dependencies": {
+    "@solid-primitives/i18n": "^2.2.1",
+    "@solidjs/meta": "^0.29.4",
+    "@solidjs/router": "^0.15.1",
+    "solid-js": "^1.9.5",
+    "zod": "^4.6.5"
+  }
+}
