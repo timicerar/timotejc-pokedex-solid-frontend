@@ -9,12 +9,14 @@ const Card = (rawProps: CardProps) => {
   const props = mergeProps({ padding: CardPaddings.DEFAULT }, rawProps);
 
   const [local, rest] = splitProps(props, [
+    'ref',
     'padding',
     'fullWidth',
     'noShadow',
     'active',
     'onClick',
     'class',
+    'classList',
     'children',
   ]);
 
@@ -23,6 +25,7 @@ const Card = (rawProps: CardProps) => {
   return (
     <Dynamic
       component={interactive() ? 'button' : 'div'}
+      ref={local.ref}
       type={interactive() ? 'button' : undefined}
       onClick={local.onClick}
       classList={{
@@ -33,6 +36,7 @@ const Card = (rawProps: CardProps) => {
         [classes.noShadow]: !!local.noShadow,
         [classes.active]: !!local.active,
         ...(local.class ? { [local.class]: true } : {}),
+        ...local.classList,
       }}
       {...rest}
     >

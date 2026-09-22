@@ -1,0 +1,24 @@
+@use 'src/styles/mixins' as *;
+
+.card {
+  isolation: isolate;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 272px;
+  gap: var(--space-3);
+  overflow: hidden;
+
+  @include mq(sm) {
+    min-height: 212px;
+  }
+}
+
+.noBadges {
+  min-height: 230px;
+
+  @include mq(sm) {
+    min-height: 180px;
+  }
+}

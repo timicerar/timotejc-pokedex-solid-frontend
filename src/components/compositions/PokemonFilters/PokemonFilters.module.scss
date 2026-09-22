@@ -1,0 +1,31 @@
+@use 'src/styles/mixins' as *;
+
+.filters {
+  display: grid;
+  grid-template-columns: 1fr 200px 200px auto;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+
+  @include mq(lsm) {
+    grid-template-columns: 1fr 1fr auto;
+  }
+
+  @include mq(sm) {
+    gap: var(--space-2);
+  }
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  @include mq(lsm) {
+    grid-column: 1 / -1;
+  }
+}
+
+.clear {
+  flex-shrink: 0;
+}

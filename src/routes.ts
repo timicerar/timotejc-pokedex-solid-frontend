@@ -11,12 +11,15 @@ export const routes: RouteDefinition[] = [
     children: [
       {
         path: '/',
-
         component: Pokedex,
       },
       {
         path: '/pokemon/:pokemon',
         component: lazy(() => import('./pages/pokemon-details')),
+      },
+      {
+        path: '/component-examples',
+        component: lazy(() => import('./pages/component-examples')),
       },
     ],
   },

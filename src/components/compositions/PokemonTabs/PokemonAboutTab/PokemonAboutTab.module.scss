@@ -1,0 +1,19 @@
+@use 'src/styles/mixins' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+
+  @include mq(sm) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}

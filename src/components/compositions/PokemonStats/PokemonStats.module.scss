@@ -1,0 +1,12 @@
+@use 'src/styles/mixins' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: var(--space-3);
+
+  @include mq(sm) {
+    gap: var(--space-2);
+  }
+}

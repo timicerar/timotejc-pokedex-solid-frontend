@@ -1,0 +1,40 @@
+@use 'src/styles/mixins' as *;
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.row {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.sentinel {
+  height: 1px;
+}
+
+// Keep in sync with the column counts in ./hooks/useColumnCount.ts.
+.grid {
+  display: grid;
+  gap: var(--space-5);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+
+  @include mq(llg) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  @include mq(md) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include mq(sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include mq(xs) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}

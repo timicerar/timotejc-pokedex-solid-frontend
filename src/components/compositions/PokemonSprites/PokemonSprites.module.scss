@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.carousel {
+  width: 100%;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.image {
+  object-fit: contain;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.indicators {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.indicator {
+  appearance: none;
+  border: none;
+  padding: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--border);
+  cursor: pointer;
+
+  &.active {
+    background: var(--primary);
+  }
+}
