@@ -17,13 +17,6 @@ const PokemonBaseStatsTab = (props: PokemonBaseStatsTabProps) => {
   return (
     <div class={classes.container}>
       <PokemonStats pokemon={props.pokemon} showTotal />
-      {/*
-        PokemonWeakAgainst needs typesQuery to compute weaknesses; while it's
-        loading, `typeDetails` is undefined so it silently renders nothing
-        (its own `<Show when={weaknesses().length > 0}>` sees an empty
-        array). Without this gate the section just pops in blank-then-filled
-        instead of showing a placeholder.
-      */}
       <Show
         when={!typesQuery.isLoading}
         fallback={<Skeleton class={classes.weakAgainstSkeleton} />}

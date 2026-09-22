@@ -42,10 +42,6 @@ const PokemonHero = (props: PokemonHeroProps) => {
       (item) => item.name === speciesQuery.data?.generation?.name,
     );
 
-  // Without this, the caption below just silently renders nothing while
-  // speciesQuery/generationsQuery are loading (their data is undefined, so
-  // the `Show` guarding it sees a falsy condition) and pops in once they
-  // resolve, instead of showing a placeholder.
   const isLoadingGeneration = () =>
     speciesQuery.isLoading || generationsQuery.isLoading;
 
