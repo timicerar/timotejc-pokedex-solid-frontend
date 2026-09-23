@@ -18,3 +18,9 @@ body {
 :focus-visible {
   outline: 2px solid var(--ring);
 }
+
+// Native <dialog>.showModal() doesn't block scrolling the rest of the page
+// on its own - lock the app's scroll container while any modal is open.
+body:has(dialog[open]) #main-content {
+  overflow: hidden;
+}
