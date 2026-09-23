@@ -9,6 +9,8 @@
     "build": "vite build",
     "serve": "vite preview",
     "typecheck": "tsc --noEmit",
+    "docker:local:up": "docker compose -f docker/compose.local.yaml up -d",
+    "docker:local:down": "docker compose -f docker/compose.local.yaml down",
     "lint": "biome lint",
     "check": "biome check",
     "check:prettier": "prettier --check \"**/*.{scss,css}\"",

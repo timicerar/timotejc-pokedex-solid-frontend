@@ -1,0 +1,14 @@
+name: timotejc-pokedex-solid-frontend
+
+services:
+  web:
+    container_name: pokedex-solid-frontend-production
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      args:
+        NODE_VERSION: '24'
+        APP_IMAGE_TAG: 'local'
+    ports:
+      - '3000:80'
+    env_file: ../.env.local
