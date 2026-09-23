@@ -1,5 +1,5 @@
 import { useParams } from '@solidjs/router';
-import { Show } from 'solid-js';
+import { Match, Switch } from 'solid-js';
 
 import { usePokemon } from '~/api/pokemon/hooks';
 import Container from '~/components/components/Container/Container';
@@ -15,18 +15,16 @@ const PokemonDetailsPage = () => {
   const pokemon = () => (!pokemonQuery.isError ? pokemonQuery.data : undefined);
 
   return (
-    <Show when={!pokemonQuery.isLoading} fallback={<PokemonDetailsSkeleton />}>
-      <Show
-        when={pokemon()}
-        fallback={
-          <Container center>
-            <NotFound type={NotFoundTypes.POKEMON_DETAILS} />
-          </Container>
-        }
-      >
+    <Switch fallback={<PokemonDetailsSkeleton />}>
+      <Match when={!pokemonQuery.isLoading && !pokemon()}>
+        <Container center>
+          <NotFound type={NotFoundTypes.POKEMON_DETAILS} />
+        </Container>
+      </Match>
+      <Match when={pokemon()}>
         {(data) => <PokemonDetails pokemon={data()} />}
-      </Show>
-    </Show>
+      </Match>
+    </Switch>
   );
 };
 

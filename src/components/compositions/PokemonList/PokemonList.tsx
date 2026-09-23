@@ -1,4 +1,4 @@
-import { Show } from 'solid-js';
+import { Match, Switch } from 'solid-js';
 
 import { usePokemons } from '~/api/pokemon/hooks';
 import NotFound from '~/components/compositions/NotFound/NotFound';
@@ -19,31 +19,31 @@ const PokemonList = () => {
   }));
 
   return (
-    <Show when={!result.isLoading()} fallback={<PokemonListSkeleton />}>
-      <Show
-        when={!result.isError() && result.items().length > 0}
-        fallback={<NotFound type={NotFoundTypes.POKEMON_LIST} />}
-      >
-        <Show
-          when={listMode().isVirtualized}
-          fallback={
-            <PokemonPlainList
-              items={result.items}
-              hasNextPage={result.hasNextPage}
-              isFetchingNextPage={result.isFetchingNextPage}
-              fetchNextPage={result.fetchNextPage}
-            />
-          }
-        >
-          <PokemonVirtualizedList
-            items={result.items}
-            hasNextPage={result.hasNextPage}
-            isFetchingNextPage={result.isFetchingNextPage}
-            fetchNextPage={result.fetchNextPage}
-          />
-        </Show>
-      </Show>
-    </Show>
+    <Switch
+      fallback={
+        <PokemonPlainList
+          items={result.items}
+          hasNextPage={result.hasNextPage}
+          isFetchingNextPage={result.isFetchingNextPage}
+          fetchNextPage={result.fetchNextPage}
+        />
+      }
+    >
+      <Match when={result.isLoading()}>
+        <PokemonListSkeleton />
+      </Match>
+      <Match when={result.isError() || result.items().length === 0}>
+        <NotFound type={NotFoundTypes.POKEMON_LIST} />
+      </Match>
+      <Match when={listMode().isVirtualized}>
+        <PokemonVirtualizedList
+          items={result.items}
+          hasNextPage={result.hasNextPage}
+          isFetchingNextPage={result.isFetchingNextPage}
+          fetchNextPage={result.fetchNextPage}
+        />
+      </Match>
+    </Switch>
   );
 };
 
