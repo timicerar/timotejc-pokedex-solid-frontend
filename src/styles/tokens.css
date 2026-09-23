@@ -10,6 +10,7 @@
   --popover-foreground: #0f1729;
   --primary: #e21c0d;
   --primary-foreground: #ffffff;
+  --primary-text: #c21610;
   --secondary: #0d6eed;
   --secondary-foreground: #ffffff;
   --muted: #f0ece5;
@@ -205,6 +206,7 @@
     --popover-foreground: #f6f4ee;
     --primary: #e71b0e;
     --primary-foreground: #ffffff;
+    --primary-text: #ff6b5b;
     --secondary: #3e88ea;
     --secondary-foreground: #090e1a;
     --muted: #1d2435;
@@ -235,6 +237,7 @@ html[data-theme='dark'] {
   --popover-foreground: #f6f4ee;
   --primary: #e71b0e;
   --primary-foreground: #ffffff;
+  --primary-text: #ff6b5b;
   --secondary: #3e88ea;
   --secondary-foreground: #090e1a;
   --muted: #1d2435;
