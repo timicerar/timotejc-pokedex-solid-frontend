@@ -43,3 +43,18 @@ export const getPokemonSpriteItems = (
     )
     .map(([key, src]) => ({ key, src }));
 };
+
+export const getPrimaryPokemonImage = (
+  pokemon: Pokemon,
+  lowerResImg: boolean,
+): string => {
+  const officialArtwork =
+    pokemon.sprites?.other?.['official-artwork']?.front_default;
+  const frontDefault = pokemon.sprites?.front_default;
+
+  if (lowerResImg) {
+    return frontDefault ?? officialArtwork ?? '';
+  }
+
+  return officialArtwork ?? frontDefault ?? '';
+};

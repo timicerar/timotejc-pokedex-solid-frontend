@@ -15,11 +15,14 @@ import {
 import type { PokemonType } from '~/constants/pokemon-types';
 import { TypographyTypes } from '~/constants/typography';
 import { useMediaQuery } from '~/hooks/useMediaQuery';
+import { usePokemonImageMode } from '~/hooks/usePokemonImageMode';
 import { t } from '~/lib/i18n';
+import { getPrimaryPokemonImage } from '~/utils/pokemonSpriteUtils';
 import classes from './PokemonContent.module.scss';
 
 const PokemonContent = (props: PokemonContentProps) => {
   const isMobile = useMediaQuery('sm');
+  const imageMode = usePokemonImageMode();
   const pokemonQuery = usePokemon(() => ({ name: props.name }));
 
   const pokemon = () => (!pokemonQuery.isError ? pokemonQuery.data : undefined);
@@ -29,9 +32,7 @@ const PokemonContent = (props: PokemonContentProps) => {
       <Show when={pokemon()} fallback={<PokemonContentError />}>
         {(data) => {
           const image = () =>
-            data().sprites?.other?.['official-artwork']?.front_default ??
-            data().sprites?.front_default ??
-            '';
+            getPrimaryPokemonImage(data(), imageMode().lowerResImg);
           const imageSize = () =>
             isMobile() ? MOBILE_POKEMON_IMAGE_SIZE : DESKTOP_POKEMON_IMAGE_SIZE;
 

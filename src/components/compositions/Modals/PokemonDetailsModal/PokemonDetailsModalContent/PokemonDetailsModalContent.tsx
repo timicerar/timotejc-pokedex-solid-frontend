@@ -23,8 +23,10 @@ import type { PokemonType } from '~/constants/pokemon-types';
 import { Routes } from '~/constants/routes';
 import { TypographyTypes } from '~/constants/typography';
 import { useMediaQuery } from '~/hooks/useMediaQuery';
+import { usePokemonImageMode } from '~/hooks/usePokemonImageMode';
 import { t } from '~/lib/i18n';
 import { closeModal } from '~/store/modals';
+import { getPrimaryPokemonImage } from '~/utils/pokemonSpriteUtils';
 import classes from '../PokemonDetailsModal.module.scss';
 
 type PokemonDetailsModalContentProps = {
@@ -34,6 +36,7 @@ type PokemonDetailsModalContentProps = {
 const PokemonDetailsModalContent = (props: PokemonDetailsModalContentProps) => {
   const navigate = useNavigate();
   const isMobile = useMediaQuery('sm');
+  const imageMode = usePokemonImageMode();
 
   const pokemonQuery = usePokemon(() => ({ name: props.name }));
   const typesQuery = usePokemonTypes(() => ({
@@ -51,9 +54,7 @@ const PokemonDetailsModalContent = (props: PokemonDetailsModalContentProps) => {
       <Show when={pokemon()} fallback={<PokemonDetailsModalError />}>
         {(data) => {
           const image = () =>
-            data().sprites?.other?.['official-artwork']?.front_default ??
-            data().sprites?.front_default ??
-            '';
+            getPrimaryPokemonImage(data(), imageMode().lowerResImg);
           const imageSize = () =>
             isMobile() ? MOBILE_POKEMON_IMAGE_SIZE : DESKTOP_POKEMON_IMAGE_SIZE;
 
