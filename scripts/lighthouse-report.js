@@ -83,7 +83,7 @@ const readReport = (filePath) => {
 
 const collectJsonFiles = (dir) =>
   fs
-    .readdirSync(dir)
+    .readdirSync(dir, { recursive: true })
     .filter((file) => file.endsWith('.json'))
     .map((file) => path.join(dir, file));
 
