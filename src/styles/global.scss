@@ -24,4 +24,5 @@ body {
 // on its own - lock the app's scroll container while any modal is open.
 body:has(dialog[open]) #main-content {
   overflow: hidden;
+  scrollbar-gutter: stable;
 }
